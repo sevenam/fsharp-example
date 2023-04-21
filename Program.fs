@@ -193,7 +193,7 @@ let intToFloat = float 1
 
 // use keywoard (e.g. similar to c# using)
 open System.IO
-let writeSomethingToFile filename content: string =
+let writeSomethingToFile filename content =
   use theFile = File.CreateText(filename)
   theFile.WriteLine("{0}", content)
 
