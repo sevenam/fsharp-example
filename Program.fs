@@ -23,7 +23,9 @@ printfn "saying: %A" input
 
 
 
-// ### Variables/immutables ### //
+// ### Variables/immutables/bindings ### //
+
+// let defines a binding (it's not really a variable as the value can not vary - it's immutable by default)
 
 let theInt = 1
 let theFloat = 1.
@@ -31,6 +33,12 @@ let theString = "texthere"
 let theDouble: double = 2
 theInt = 2 // variables are immutable by default and cannot be changed (this compares 1 to 2 and returns false)
 theInt = 1 // variables are immutable by default and cannot be changed (this compares 1 to 1 and returns true)
+
+// mutable bindings
+// you can use the mutable keyword to make a binding mutable
+let mutable theMutableInt = 1
+theMutableInt <- 2 // this changes the value of the binding to 2
+theMutableInt
 
 // arrays let us specificy the size of the collection and are mutable
 let theArray = [|1.; 2; 3.9|]
@@ -179,8 +187,13 @@ let floatToString = string 1.1
 let intToFloat = float 1
 
 
-// upcast and downcast operators:
+// upcast and downcast operators (:> and :?>)):
 // see: https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/casting-and-conversions
 
 
+// use keywoard (e.g. similar to c# using)
+open System.IO
+let writeSomethingToFile filename content: string =
+  use theFile = File.CreateText(filename)
+  theFile.WriteLine("{0}", content)
 
